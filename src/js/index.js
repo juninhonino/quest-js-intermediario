@@ -7,16 +7,13 @@ const mensagemObrigatorio = document.querySelectorAll('.campo-obrigatorio')
 
 
 enviar.addEventListener('click', function () {
-    campos.forEach(campo =>
-        campo.value !== "" ? campo.classList.add('preenchido') : campo.classList.add('vazio')
-    )
+    campos.forEach(function (campo) {
+        campo.classList.remove('preenchido');
+        campo.value === "" ? campo.classList.add('vazio') : campo.classList.add('preenchido');
+        let campoObrigatorio = campo.nextElementSibling;
+        campo.value === "" ? campoObrigatorio.classList.remove('esconder-campo') : campoObrigatorio.classList.add('esconder-campo');
+
+    })
 })
 
 
-
-
-
-
-
-// campo.value !== "" ? campo.classList.add('preenchido') : campo.classList.add('vazio'),
-// campo.value == "" ? campo.classList.remove('esconder-campo') : campo.classList.add('esconder-campo')
